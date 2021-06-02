@@ -1,1 +1,1 @@
-# redi-int-project
+# Final Project of Redi's Java intermediate program
