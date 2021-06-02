@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>org.redi</groupId>
-	<artifactId>person-service</artifactId>
+	<artifactId>user-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>person-service</name>
+	<name>user-service</name>
 	<description>User Service of the Java Intermediate Final Project</description>
 	<properties>
 		<java.version>11</java.version>
