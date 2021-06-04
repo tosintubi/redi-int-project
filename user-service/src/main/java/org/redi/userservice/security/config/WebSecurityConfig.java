@@ -13,6 +13,16 @@ public class WebSecurityConfig  extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        super.configure(http);
+        // super.configure(http);
+        //TODO: change to form based authentication
+        http
+                .csrf().disable() // to send post request without getting rejected..
+                .authorizeRequests()
+                    .antMatchers("/api/v*/registration/**") // permit
+                    .permitAll()
+                .anyRequest()
+                .authenticated().and()
+                .formLogin();
+
     }
 }
