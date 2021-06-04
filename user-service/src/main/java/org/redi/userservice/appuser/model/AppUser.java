@@ -1,9 +1,6 @@
 package org.redi.userservice.appuser.model;
 
-import lombok.Data;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -18,6 +15,7 @@ import java.util.Collections;
 @NoArgsConstructor
 @Getter
 @Setter
+@EqualsAndHashCode
 public class AppUser implements UserDetails {
 
 
@@ -35,6 +33,19 @@ public class AppUser implements UserDetails {
     private Boolean locked = false;
     private Boolean enabled = false;
 
+
+    public AppUser(String username, String firstName,  String lastName,
+                   String email, String password, AppUserRole appUserRole,
+                   Boolean locked, Boolean enabled) {
+        this.username = username;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.password = password;
+        this.appUserRole = appUserRole;
+        this.locked = locked;
+        this.enabled = enabled;
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
