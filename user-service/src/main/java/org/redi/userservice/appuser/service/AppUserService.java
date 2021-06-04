@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import org.redi.userservice.appuser.model.AppUser;
 import org.redi.userservice.appuser.repository.AppUserRepository;
 import org.redi.userservice.registration.token.ConfirmationToken;
+import org.redi.userservice.registration.token.ConfirmationTokenService;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -21,6 +22,7 @@ public class AppUserService implements UserDetailsService {
     private final static  String USER_NOT_FOUND_MESSAGE = "User with email %s not found";
     private  final AppUserRepository appUserRepository;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
+    private final ConfirmationTokenService confirmationTokenService;
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
@@ -48,6 +50,9 @@ public class AppUserService implements UserDetailsService {
                 LocalDateTime.now().plusMinutes(30),
                 appUser
         );
+        confirmationTokenService.saveConfirmationToken(confirmationToken);
+
+        // TODO: Send Email
         return "it still works";
     }
 }
