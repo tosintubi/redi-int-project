@@ -7,7 +7,7 @@ server:
 
 spring:
   application:
-    name: USER-SERVICE
+    name: USERSIGNUP-SERVICE
   datasource:
     url: jdbc:postgresql://localhost:5432/registration
     username:

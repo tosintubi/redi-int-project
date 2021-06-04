@@ -3,11 +3,15 @@ package org.redi.userservice.appuser.service;
 import lombok.AllArgsConstructor;
 import org.redi.userservice.appuser.model.AppUser;
 import org.redi.userservice.appuser.repository.AppUserRepository;
+import org.redi.userservice.registration.token.ConfirmationToken;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import java.time.LocalDateTime;
+import java.util.UUID;
 
 @Service
 @AllArgsConstructor
@@ -35,6 +39,15 @@ public class AppUserService implements UserDetailsService {
         appUser.setPassword(encodedPassword); // encode and replace password
 
         appUserRepository.save(appUser);
+
+        // Creates and Saves it
+        String token = UUID.randomUUID().toString();
+        ConfirmationToken confirmationToken = new ConfirmationToken(
+                token,
+                LocalDateTime.now(),
+                LocalDateTime.now().plusMinutes(30),
+                appUser
+        );
         return "it still works";
     }
 }
