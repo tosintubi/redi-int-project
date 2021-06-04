@@ -1,4 +1,4 @@
-package org.redi.userservice.model;
+package org.redi.userservice.registration.model;
 
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
