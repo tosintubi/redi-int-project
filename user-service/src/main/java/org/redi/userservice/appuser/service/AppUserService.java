@@ -55,4 +55,8 @@ public class AppUserService implements UserDetailsService {
         // TODO: Send Email
         return "it still works";
     }
+
+    public int enableAppUser(String email) {
+        return appUserRepository.enableAppUser(email);
+    }
 }
