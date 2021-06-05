@@ -14,10 +14,11 @@ import javax.mail.internet.MimeMessage;
 
 @Service
 @AllArgsConstructor
-public class EmailSenderService implements EmailSender {
+public class EmailService implements EmailSender {
 
-    private final JavaMailSender mailSender;
-    private final static Logger LOGGER = LoggerFactory.getLogger((EmailSenderService.class));
+
+    private  JavaMailSender mailSender ;
+    private final static Logger LOGGER = LoggerFactory.getLogger((EmailService.class));
 
     @Override
     @Async // Async Method
