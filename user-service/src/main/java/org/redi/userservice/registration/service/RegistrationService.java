@@ -42,7 +42,7 @@ public class RegistrationService {
         String confirmationLink = "http://localhost:8080/api/v1/registration/confirm?token=" + token;
         emailSender.sendRegistrationEmail(
                 request.getEmail(),
-                buildEmail(request.getEmail(), confirmationLink));
+                buildEmail(request.getEmail(), request.getFirstName(),confirmationLink));
         return token;
     }
 
@@ -73,7 +73,7 @@ public class RegistrationService {
         return "confirmed";
     }
 
-    public String buildEmail(String email, String link){
+    public String buildEmail(String email, String firstName, String link){
         return "<div class=\"es-wrapper-color\" style=\"background-color:#FFFFFF\"> \n" +
                 "   <!--[if gte mso 9]>\n" +
                 "\t\t\t<v:background xmlns:v=\"urn:schemas-microsoft-com:vml\" fill=\"t\">\n" +
@@ -149,7 +149,7 @@ public class RegistrationService {
                 "                       </table></td> \n" +
                 "                     </tr> \n" +
                 "                     <tr> \n" +
-                "                      <td align=\"center\" class=\"es-m-p0r\" style=\"padding:0;Margin:0;padding-top:5px;padding-bottom:5px;padding-right:40px\"><p style=\"Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:Montserrat, sans-serif;line-height:24px;color:#333333;font-size:16px\">WELCOME TO REDI-BOOKS</p><p style=\"Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:Montserrat, sans-serif;line-height:24px;color:#333333;font-size:16px\"><br></p><p style=\"Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:Montserrat, sans-serif;line-height:24px;color:#333333;font-size:16px\">Please confirm that <strong><a target=\"_blank\" href=\"mailto:"+email+"\" style=\"-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;text-decoration:none;color:#134F5C;font-size:16px\">"+email+"</a></strong>&nbsp;is your email address by clicking on the button below or use this link <a target=\"_blank\" href=\"" + link +"\" style=\"-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;text-decoration:none;color:#134F5C;font-size:16px;word-break:break-all\">https://lucasandjoseph.com/confirm-email</a> within <strong>48 hours</strong>.<br><br></p></td> \n" +
+                "                      <td align=\"center\" class=\"es-m-p0r\" style=\"padding:0;Margin:0;padding-top:5px;padding-bottom:5px;padding-right:40px\"><p style=\"Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:Montserrat, sans-serif;line-height:24px;color:#333333;font-size:16px\">HELLO "+firstName + "+! <br/>WELCOME TO REDI-BOOKS</p><p style=\"Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:Montserrat, sans-serif;line-height:24px;color:#333333;font-size:16px\"><br></p><p style=\"Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:Montserrat, sans-serif;line-height:24px;color:#333333;font-size:16px\">Please confirm that <strong><a target=\"_blank\" href=\"mailto:"+email+"\" style=\"-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;text-decoration:none;color:#134F5C;font-size:16px\">"+email+"</a></strong>&nbsp;is your email address by clicking on the button below or use this link <a target=\"_blank\" href=\"" + link +"\" style=\"-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;text-decoration:none;color:#134F5C;font-size:16px;word-break:break-all\">"+link+"</a> within <strong>48 hours</strong>.<br><br></p></td> \n" +
                 "                     </tr> \n" +
                 "                     <tr> \n" +
                 "                      <td align=\"center\" class=\"es-m-txt-c\" style=\"padding:0;Margin:0;padding-top:10px;padding-bottom:10px;font-size:0\"> \n" +
