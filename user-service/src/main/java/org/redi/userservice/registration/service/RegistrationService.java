@@ -21,9 +21,9 @@ public class RegistrationService {
     private final AppUserService appUserService;
     private final EmailValidatorService emailValidator;
     private final ConfirmationTokenService confirmationTokenService;
-    private final EmailSender emailService;
+    private final EmailSender emailSender;
     //private final EmailTemplateService emailTemplateService;
-    //
+
     public String register(RegistrationRequest request) {
         boolean isValidEmail = emailValidator.test(request.getEmail());
         if (!isValidEmail) {
@@ -40,7 +40,7 @@ public class RegistrationService {
 
         // TODO: Replace with Service URL
         String confirmationLink = "http://localhost:8080/api/v1/registration/confirm?token=" + token;
-        emailService.sendRegistrationEmail(
+        emailSender.sendRegistrationEmail(
                 request.getEmail(),
                 buildEmail(request.getEmail(), confirmationLink));
         return token;
