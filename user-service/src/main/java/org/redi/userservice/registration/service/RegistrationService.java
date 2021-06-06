@@ -22,12 +22,12 @@ public class RegistrationService {
     private final EmailValidatorService emailValidator;
     private final ConfirmationTokenService confirmationTokenService;
     private final EmailSender emailSender;
-    //private final EmailTemplateService emailTemplateService;
+
 
     public String register(RegistrationRequest request) {
         boolean isValidEmail = emailValidator.test(request.getEmail());
         if (!isValidEmail) {
-            throw new IllegalStateException(String.format("%s email is not in the valid format"));
+            throw new IllegalStateException(String.format("%s email is not in the valid format", request.getEmail()));
         }
 
         String token = appUserService.signUpUser(new AppUser(
