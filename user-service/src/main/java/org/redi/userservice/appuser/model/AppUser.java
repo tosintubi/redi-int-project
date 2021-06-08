@@ -25,6 +25,7 @@ public class AppUser implements UserDetails {
     private String firstName;
     private String lastName;
     private String email;
+    private String phoneNumber;
     private String password;
 
     @Enumerated(EnumType.STRING)
@@ -34,12 +35,14 @@ public class AppUser implements UserDetails {
 
 
     public AppUser(String firstName,  String lastName,
-                   String email, String password, AppUserRole appUserRole
+                   String email, String phoneNumber, String password,
+                   AppUserRole appUserRole
                    ) {
 
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
+        this.phoneNumber = phoneNumber;
         this.password = password;
         this.appUserRole = appUserRole;
     }

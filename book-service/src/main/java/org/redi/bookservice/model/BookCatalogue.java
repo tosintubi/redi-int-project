@@ -1,16 +1,15 @@
 package org.redi.bookservice.model;
 
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
 
 @Entity
-@Data
 @Getter
 @Setter
-public class Book {
+public class BookCatalogue {
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -18,31 +17,32 @@ public class Book {
 
     private String ISBN;
     private String bookTitle;
+    private String originalTitle;
+    private int copies;
 
 //    @ManyToMany()
 //    private List<Author> authors;
     private String authors;
 
-    private String publicationDate;
+    private int publicationYear;
     private String publisher;
     private String category;
     private String language;
 
 
-    public Book() {
+    public BookCatalogue() {
     }
 
-    public Book(String ISBN, String bookTitle, String authors,
-                String publicationDate, String publisher,
+    public BookCatalogue(String ISBN, String bookTitle, String authors,
+                int publicationYear, String publisher,
                 String category, String language) {
         this.ISBN = ISBN;
         this.bookTitle = bookTitle;
         this.authors = authors;
-        this.publicationDate = publicationDate;
+        this.publicationYear = publicationYear;
         this.publisher = publisher;
         this.category = category;
         this.language = language;
     }
-
 
 }
