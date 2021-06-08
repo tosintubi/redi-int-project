@@ -9,6 +9,7 @@ import org.redi.userservice.email.EmailService;
 import org.redi.userservice.registration.model.RegistrationRequest;
 import org.redi.userservice.registration.token.ConfirmationToken;
 import org.redi.userservice.registration.token.ConfirmationTokenService;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -23,6 +24,8 @@ public class RegistrationService {
     private final ConfirmationTokenService confirmationTokenService;
     private final EmailSender emailSender;
 
+    @Value("${server.port}")
+    private String port;
 
     public String register(RegistrationRequest request) {
         boolean isValidEmail = emailValidator.test(request.getEmail());
@@ -39,7 +42,7 @@ public class RegistrationService {
         ));
 
         // TODO: Replace with Service URL
-        String confirmationLink = "http://localhost:8080/api/v1/registration/confirm?token=" + token;
+        String confirmationLink = "http://localhost:"+this.port+"/api/v1/registration/confirm?token=" + token;
         emailSender.sendRegistrationEmail(
                 request.getEmail(),
                 buildEmail(request.getEmail(), request.getFirstName(),confirmationLink));
