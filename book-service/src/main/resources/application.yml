@@ -5,7 +5,7 @@ spring:
   application:
     name: BOOK-SERVICE
   datasource:
-    url: jdbc:postgresql://localhost:5432/booksservice
+    url: jdbc:postgresql://localhost:5432/bookservice
     username:
   jpa:
     hibernate:
@@ -17,22 +17,6 @@ spring:
       show-sql: true
 
 
-#
-#spring:
-#  application:
-#    name: USERSIGNUP-SERVICE
-#  datasource:
-#    url: jdbc:postgresql://localhost:5432/registration
-#    username:
-#
-#  jpa:
-#    hibernate:
-#      ddl-auto: create-drop
-#    properties:
-#      hibernate:
-#        dialect: org.hibernate.dialect.PostgreSQLDialect
-#        format_sql: true
-#      show-sql: true
-#
+
 #  spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
 #  spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect

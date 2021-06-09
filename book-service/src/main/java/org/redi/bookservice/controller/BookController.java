@@ -1,6 +1,7 @@
 package org.redi.bookservice.controller;
 
 
+import lombok.AllArgsConstructor;
 import org.redi.bookservice.model.Book;
 import org.redi.bookservice.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,15 +13,13 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/books/")
+@AllArgsConstructor
 public class BookController {
 
-    @Autowired
+
     private final BookService bookService;
 
-    public BookController(BookService bookService) {
-        this.bookService = bookService;
-    }
-
+    
     @PostMapping("add/")
     public ResponseEntity<Book> saveBook(@RequestBody Book nbook){
         Book newBook =  bookService.saveBook(nbook);

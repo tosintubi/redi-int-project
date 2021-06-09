@@ -1,5 +1,6 @@
 package org.redi.bookservice.service;
 
+import lombok.AllArgsConstructor;
 import org.redi.bookservice.model.Book;
 import org.redi.bookservice.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,15 +10,13 @@ import java.util.List;
 
 
 @Service
+@AllArgsConstructor
 public class BookService {
 
 
-    @Autowired
+
     private final BookRepository bookRepository;
 
-    public BookService(BookRepository bookRepository) {
-        this.bookRepository = bookRepository;
-    }
 
     public Book saveBook(Book book){
         // log.info("Implementing Service: BookService.saveBook");
