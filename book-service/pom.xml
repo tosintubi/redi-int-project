@@ -14,9 +14,10 @@
 	<name>book-service</name>
 	<description>Book Service of the Java Intermediate Final Project</description>
 	<properties>
-		<java.version>11</java.version>
+		<java.version>13</java.version>
 	</properties>
 	<dependencies>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
@@ -59,6 +60,14 @@
 							<artifactId>lombok</artifactId>
 						</exclude>
 					</excludes>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>13</source>
+					<target>13</target>
 				</configuration>
 			</plugin>
 		</plugins>
