@@ -25,6 +25,8 @@ public interface BookRepository  extends JpaRepository<Book, Long> {
             value = "SELECT b from Book b WHERE b.title LIKE %:keyword% OR b.originalTitle LIKE %:keyword% "
     )
     List<Book> findBookByTitleOrOriginalTitle(@Param("keyword") String keyword);
+
+    // TODO: Implement Sort
 }
 
 //
