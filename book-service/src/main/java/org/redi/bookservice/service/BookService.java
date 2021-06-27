@@ -31,4 +31,12 @@ public class BookService {
     public Book findByIsbn(String isbn) {
         return bookRepository.findByIsbn(isbn);
     }
+
+    public List<Book> findBookByTitle(String keyword) {
+        if (keyword != null) {
+            return bookRepository.findBookByTitleOrOriginalTitle(keyword);
+        }
+        // returns all the book, if keyword is empty
+        return bookRepository.findAll();
+    }
 }
