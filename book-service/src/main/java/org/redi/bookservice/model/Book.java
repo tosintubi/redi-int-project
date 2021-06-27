@@ -19,34 +19,16 @@ public class Book {
     private Long id;
 
     private String isbn;
-
-    private String bookTitle;
-    private String languageCode;
+    private String isbn13;
+    private String title;
+    private String originalTitle;
 
     //    @ManyToMany()
     //    private List<Author> authors;
     private String authors;
+    private String languageCode;
 
-    private String publication;
+    private Integer publicationYear;
     private String publisher;
     private String category;
-    private String language;
-
-    private String isbn13;
-
-    public Book(String isbn, String bookTitle, String languageCode, String authors,
-                String publication, String publisher, String category, String language,
-                 String isbn13, String authors1) {
-
-        this.bookTitle = bookTitle;
-        this.languageCode = languageCode;
-        this.authors = authors;
-        this.publication = publication;
-        this.publisher = publisher;
-        this.category = category;
-        this.language = language;
-        this.isbn = isbn;
-        this.isbn13 = isbn13;
-        this.authors = authors1;
-    }
 }
