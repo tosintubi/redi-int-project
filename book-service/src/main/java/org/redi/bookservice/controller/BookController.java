@@ -31,4 +31,9 @@ public class BookController {
         List<Book> bookList = bookService.findAllBooks();
         return  new ResponseEntity<>(bookList, HttpStatus.OK);
     }
+
+    public ResponseEntity<Book> findByIsbn(String isbn){
+        Book book = bookService.findByIsbn(isbn);
+        return  new ResponseEntity<>(book, HttpStatus.OK);
+    }
 }
