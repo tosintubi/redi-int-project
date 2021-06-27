@@ -6,6 +6,7 @@ import org.redi.bookservice.model.Book;
 import org.redi.bookservice.model.BookCatalogue;
 import org.redi.bookservice.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -33,8 +34,15 @@ public class BookController {
         return  new ResponseEntity<>(bookList, HttpStatus.OK);
     }
 
-    public ResponseEntity<Book> findByIsbn(String isbn){
+    @GetMapping("isbn/{isbn}")
+    public ResponseEntity<Book> findByIsbn(@PathVariable String isbn){
         Book book = bookService.findByIsbn(isbn);
         return  new ResponseEntity<>(book, HttpStatus.OK);
+    }
+
+    @GetMapping("search/{keyword}")
+    public  ResponseEntity<List<Book>> findBookByTitle(@PathVariable("keyword") String keyword){
+        List<Book> bookList = bookService.findBookByTitle(keyword);
+        return  new ResponseEntity<>(bookList, HttpStatus.OK);
     }
 }
