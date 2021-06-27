@@ -39,4 +39,12 @@ public class BookService {
         // returns all the book, if keyword is empty
         return bookRepository.findAll();
     }
+
+    public List<Book> findBookByAuthors(String authors) {
+        if (authors != null) {
+            return bookRepository.findBookByAuthors(authors);
+        }
+        // returns all the book, if keyword is empty
+        return bookRepository.findAll();
+    }
 }

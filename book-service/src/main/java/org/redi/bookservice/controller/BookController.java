@@ -34,15 +34,21 @@ public class BookController {
         return  new ResponseEntity<>(bookList, HttpStatus.OK);
     }
 
-    @GetMapping("isbn/{isbn}")
+    @GetMapping("search/isbn/{isbn}")
     public ResponseEntity<Book> findByIsbn(@PathVariable String isbn){
         Book book = bookService.findByIsbn(isbn);
         return  new ResponseEntity<>(book, HttpStatus.OK);
     }
 
-    @GetMapping("search/{keyword}")
+    @GetMapping("search/title/{keyword}")
     public  ResponseEntity<List<Book>> findBookByTitle(@PathVariable("keyword") String keyword){
         List<Book> bookList = bookService.findBookByTitle(keyword);
+        return  new ResponseEntity<>(bookList, HttpStatus.OK);
+    }
+
+    @GetMapping("search/author/{authors}")
+    public  ResponseEntity<List<Book>> findBookByAuthors(@PathVariable("authors") String keyword){
+        List<Book> bookList = bookService.findBookByAuthors(keyword);
         return  new ResponseEntity<>(bookList, HttpStatus.OK);
     }
 }
