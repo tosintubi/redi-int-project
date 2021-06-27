@@ -15,15 +15,13 @@ import java.util.List;
 @Repository
 public interface BookRepository  extends JpaRepository<Book, Long> {
 
-    @Query(value = "SELECT b from Book b WHERE b.authors LIKE %?1% ")
-    List<Book> findBookByAuthors(String author);
+    @Query(value = "SELECT b from Book b WHERE b.authors LIKE %:authors% ")
+    List<Book> findBookByAuthors(String authors);
 
     Book findByIsbn(String isbn);
 
 
-    @Query(
-            value = "SELECT b from Book b WHERE b.title LIKE %:keyword% OR b.originalTitle LIKE %:keyword% "
-    )
+    @Query(value = "SELECT b from Book b WHERE b.title LIKE %:keyword% OR b.originalTitle LIKE %:keyword% ")
     List<Book> findBookByTitleOrOriginalTitle(@Param("keyword") String keyword);
 
     // TODO: Implement Sort
