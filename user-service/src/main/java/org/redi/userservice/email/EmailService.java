@@ -23,8 +23,6 @@ public class EmailService implements EmailSender {
     @Override
     @Async // Async Method
     public void sendRegistrationEmail(String recipientEmail, String emailMessage) {
-         // TODO: use java mail sender
-
 
         try {
 
