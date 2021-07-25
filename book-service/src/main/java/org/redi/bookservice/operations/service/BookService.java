@@ -13,8 +13,6 @@ import java.util.List;
 @AllArgsConstructor
 public class BookService {
 
-
-
     @Autowired
     private final BookRepository bookRepository;
 

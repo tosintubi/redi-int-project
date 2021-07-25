@@ -4,6 +4,7 @@ package org.redi.bookservice.operations.controller;
 import lombok.AllArgsConstructor;
 import org.redi.bookservice.operations.model.Book;
 import org.redi.bookservice.operations.service.BookService;
+import org.redi.bookservice.registrations.service.BookRegistrationService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -18,7 +19,6 @@ public class BookController {
 
     private final BookService bookService;
 
-    
     @PostMapping("add/")
     public ResponseEntity<Book> saveBook(@RequestBody Book book){
         Book newBook =  bookService.saveBook(book);

@@ -31,19 +31,22 @@ public class BookRegistrations {
 
 
     /* Many Book Registrations can be owned linked to one Book*/
-    @ManyToOne(
+    /*@ManyToOne(
             cascade = CascadeType.ALL
     )
     @JoinColumn(
-            name = "book_id",
-            referencedColumnName = "id"
+            name = "bookid",
+            referencedColumnName = "Id"
     )
-    private Book book;
+    private Book book;*/
+    private Long book;
 
     private Long userId; // Book Owner is a user .. // Many to One
 
-    private LocalDateTime localDateTime;
-    private  Boolean active;
+    private LocalDateTime created;
+    private LocalDateTime updated;
+    private Boolean enabled;
     private Integer amount;
+    private Integer amountLoanedOut;
     private Double loanPrice;
 }
