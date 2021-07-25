@@ -1,4 +1,4 @@
-package org.redi.bookservice.model;
+package org.redi.bookservice.operations.model;
 
 import lombok.*;
 
@@ -8,6 +8,7 @@ import javax.persistence.*;
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 @Builder
 
 public class BookCatalogue {

@@ -1,10 +1,7 @@
-package org.redi.bookservice.repository;
+package org.redi.bookservice.operations.repository;
 
 
-import org.redi.bookservice.model.Author;
-import org.redi.bookservice.model.Book;
-import org.redi.bookservice.model.BookCatalogue;
-import org.springframework.data.domain.Page;
+import org.redi.bookservice.operations.model.Book;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

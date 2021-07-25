@@ -1,9 +1,8 @@
-package org.redi.bookservice.service;
+package org.redi.bookservice.operations.service;
 
 import lombok.AllArgsConstructor;
-import org.redi.bookservice.model.Book;
-import org.redi.bookservice.model.BookCatalogue;
-import org.redi.bookservice.repository.BookRepository;
+import org.redi.bookservice.operations.model.Book;
+import org.redi.bookservice.operations.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

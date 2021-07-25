@@ -1,11 +1,11 @@
-package org.redi.bookservice.model;
+package org.redi.bookservice.operations.model;
 
 import lombok.Data;
 
 import javax.persistence.*;
 import java.util.List;
 
-@Entity
+
 @Data
 public class Author {
 

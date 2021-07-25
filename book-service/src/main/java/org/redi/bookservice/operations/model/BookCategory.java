@@ -1,4 +1,4 @@
-package org.redi.bookservice.model;
+package org.redi.bookservice.operations.model;
 
 public enum BookCategory {
     WILDLIFE,

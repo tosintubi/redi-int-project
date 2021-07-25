@@ -1,12 +1,9 @@
-package org.redi.bookservice.controller;
+package org.redi.bookservice.operations.controller;
 
 
 import lombok.AllArgsConstructor;
-import org.redi.bookservice.model.Book;
-import org.redi.bookservice.model.BookCatalogue;
-import org.redi.bookservice.service.BookService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.Query;
+import org.redi.bookservice.operations.model.Book;
+import org.redi.bookservice.operations.service.BookService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
