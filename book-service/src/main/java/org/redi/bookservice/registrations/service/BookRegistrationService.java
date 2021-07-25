@@ -45,7 +45,7 @@ public class BookRegistrationService {
         return bookRegistrationsRepository.save(bookRegis);
     }
 
-    public BookRegistrations saveBookRegistration(Long bookRegisId){
+    public BookRegistrations disableBookRegistration(Long bookRegisId){
         log.info("Implementing Service: BookService.disableBookRegistration");
 
         BookRegistrations bookRegs = getBookRegistration(bookRegisId);
