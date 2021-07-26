@@ -6,9 +6,11 @@ import org.redi.bookservice.exceptions.UserNotFoundException;
 import org.redi.bookservice.registrations.model.BookRegistrations;
 import org.redi.bookservice.registrations.repository.BookRegistrationsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Optional;
 
 @Service
@@ -37,8 +39,10 @@ public class BookRegistrationService {
         int count = bookRegis.getAmount();
         if (count < 1) bookRegis.setEnabled(false);
 
+
         bookRegis.setCreated(LocalDateTime.now());
         // Initially set the updated to the created_date
+        ;
         bookRegis.setUpdated(LocalDateTime.now());
 
         bookRegis.setAmountLoanedOut(0);
@@ -49,7 +53,7 @@ public class BookRegistrationService {
         log.info("Implementing Service: BookService.disableBookRegistration");
 
         BookRegistrations bookRegs = getBookRegistration(bookRegisId);
-        bookRegs.setEnabled(true);
+        bookRegs.setEnabled(false);
         bookRegs.setUpdated(LocalDateTime.now());
         return bookRegistrationsRepository.save(bookRegs);
     }
