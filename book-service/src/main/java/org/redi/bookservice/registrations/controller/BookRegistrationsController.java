@@ -13,9 +13,7 @@ import org.springframework.web.bind.annotation.*;
 @AllArgsConstructor
 public class BookRegistrationsController {
 
-
     private final BookRegistrationService bookRegistrationService;
-
 
     @GetMapping("test/")
     public String findByIsbn(){
@@ -23,9 +21,13 @@ public class BookRegistrationsController {
     }
 
     @PostMapping("add/")
-    public ResponseEntity<BookRegistrations> saveBook(@RequestBody BookRegistrations book){
+    public ResponseEntity<BookRegistrations> saveBookRegistrations(@RequestBody BookRegistrations book){
         BookRegistrations newBookRegis =  bookRegistrationService.saveBookRegistration(book);
         return  new ResponseEntity<>(newBookRegis, HttpStatus.CREATED);
     }
 
+    @PutMapping("disable/{RegBookingId}")
+    public  ResponseEntity<BookRegistrations> disableBookRegistrations(@PathVariable("RegBookingId")Long regBookingId){
+
+    }
 }

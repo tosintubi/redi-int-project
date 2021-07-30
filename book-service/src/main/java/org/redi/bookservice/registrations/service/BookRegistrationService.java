@@ -21,13 +21,16 @@ public class BookRegistrationService {
     private BookRegistrationsRepository bookRegistrationsRepository;
 
 
-    public BookRegistrations getBookRegistration(Long id){
+    //
+    public BookRegistrations getBookRegistrationByIdAndUserId(Long id, Long userId){
         log.info("Invoking Service: BookService.saveBookRegistration");
-        Long bookId = Long.parseLong(String.valueOf(id));
+        // Long bookId = Long.parseLong(String.valueOf(id));
 
-        return bookRegistrationsRepository.findById(bookId).orElseThrow(
-                ()-> new BookRegistrationNotFoundException("Book registration with Id " + bookId + " could not be found")
-        );
+        return bookRegistrationsRepository.findBookRegistrationsByIdAndUserId(id, userId);
+
+        /*        .orElseThrow(
+                ()-> new BookRegistrationNotFoundException("Book registration with Id " + id + " could not be found")
+        );*/
     }
     public BookRegistrations saveBookRegistration(BookRegistrations bookRegis){
         log.info("Invoking Service: BookService.saveBookRegistration");
@@ -49,10 +52,10 @@ public class BookRegistrationService {
         return bookRegistrationsRepository.save(bookRegis);
     }
 
-    public BookRegistrations disableBookRegistration(Long bookRegisId){
+    public BookRegistrations disableBookRegistration(Long bookRegisId, Long userId){
         log.info("Implementing Service: BookService.disableBookRegistration");
 
-        BookRegistrations bookRegs = getBookRegistration(bookRegisId);
+        BookRegistrations bookRegs = getBookRegistrationByIdAndUserId(bookRegisId, userId);
         bookRegs.setEnabled(false);
         bookRegs.setUpdated(LocalDateTime.now());
         return bookRegistrationsRepository.save(bookRegs);
