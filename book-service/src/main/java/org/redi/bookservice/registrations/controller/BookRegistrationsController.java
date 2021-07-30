@@ -17,11 +17,12 @@ public class BookRegistrationsController {
     @Autowired
     private final BookRegistrationService bookRegistrationService;
 
-    /*@GetMapping("test/")
+    /*
+    @GetMapping("test/")
     public String findByIsbn(){
         return "it works";
     }
-*/
+    */
     @PostMapping("add/")
     public ResponseEntity<BookRegistrations> saveBookRegistrations(@RequestBody BookRegistrations book){
         BookRegistrations newBookRegis =  bookRegistrationService.saveBookRegistration(book);
