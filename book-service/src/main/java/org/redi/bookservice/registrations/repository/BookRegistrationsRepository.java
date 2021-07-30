@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface BookRegistrationsRepository extends JpaRepository <BookRegistrations, Long> {
-    BookRegistrations findByIdAndUserId(Long id, Long userId);
+    // BookRegistrations findByIdAndUserId(Long id, Long userId);
 
 
 

@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import org.redi.bookservice.operations.model.Book;
 import org.redi.bookservice.registrations.model.BookRegistrations;
 import org.redi.bookservice.registrations.service.BookRegistrationService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 @AllArgsConstructor
 public class BookRegistrationsController {
 
+    @Autowired
     private final BookRegistrationService bookRegistrationService;
 
     /*@GetMapping("test/")
