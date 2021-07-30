@@ -12,6 +12,7 @@ public interface BookRegistrationsRepository extends JpaRepository <BookRegistra
 
 
 
-    @Query(value = "SELECT b from BookRegistrations b WHERE b.Id=:Id AND b.userId=:userId")
-    BookRegistrations findBookRegistrationsByIdAndUserId(@Param("Id")Long id, @Param("userId")Long userId);
+    // @Query(value = "SELECT b from BookRegistrations b WHERE b.Id=:Id AND b.userId=:userId")
+    @Query(value = "SELECT b from BookRegistrations b WHERE b.Id=:Id")
+    BookRegistrations findBookRegistrationsByIdAndUserId(@Param("Id")Long id);
 }

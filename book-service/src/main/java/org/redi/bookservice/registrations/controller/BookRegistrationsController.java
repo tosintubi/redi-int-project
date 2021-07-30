@@ -15,11 +15,11 @@ public class BookRegistrationsController {
 
     private final BookRegistrationService bookRegistrationService;
 
-    @GetMapping("test/")
+    /*@GetMapping("test/")
     public String findByIsbn(){
         return "it works";
     }
-
+*/
     @PostMapping("add/")
     public ResponseEntity<BookRegistrations> saveBookRegistrations(@RequestBody BookRegistrations book){
         BookRegistrations newBookRegis =  bookRegistrationService.saveBookRegistration(book);
@@ -28,6 +28,7 @@ public class BookRegistrationsController {
 
     @PutMapping("disable/{RegBookingId}")
     public  ResponseEntity<BookRegistrations> disableBookRegistrations(@PathVariable("RegBookingId")Long regBookingId){
-
+        BookRegistrations bookRegistrations = bookRegistrationService.disableBookRegistration(regBookingId);
+        return new ResponseEntity<>(bookRegistrations, HttpStatus.OK);
     }
 }
