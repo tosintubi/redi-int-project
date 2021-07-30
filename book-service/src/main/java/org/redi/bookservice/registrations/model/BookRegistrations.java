@@ -39,6 +39,7 @@ public class BookRegistrations {
             referencedColumnName = "Id"
     )
     private Book book;*/
+    // TODO: Replace with book reference
     private Long book;
 
     private Long userId; // Book Owner is a user .. // Many to One

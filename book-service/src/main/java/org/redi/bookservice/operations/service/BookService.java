@@ -31,6 +31,7 @@ public class BookService {
         return bookRepository.findByIsbn(isbn);
     }
 
+    // TODO: Change method to return Book instead of List<>
     public List<Book> findBookByTitle(String keyword) {
         if (keyword != null) {
             return bookRepository.findBookByTitleOrOriginalTitle(keyword);

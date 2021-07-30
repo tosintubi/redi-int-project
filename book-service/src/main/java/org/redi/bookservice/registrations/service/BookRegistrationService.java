@@ -3,6 +3,10 @@ package org.redi.bookservice.registrations.service;
 import lombok.extern.slf4j.Slf4j;
 import org.redi.bookservice.exceptions.BookRegistrationNotFoundException;
 import org.redi.bookservice.exceptions.UserNotFoundException;
+import org.redi.bookservice.operations.model.Book;
+import org.redi.bookservice.operations.model.VO.BookBookRegistrationReponseTemplateVO;
+import org.redi.bookservice.operations.repository.BookRepository;
+import org.redi.bookservice.operations.service.BookService;
 import org.redi.bookservice.registrations.model.BookRegistrations;
 import org.redi.bookservice.registrations.repository.BookRegistrationsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +15,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -19,6 +24,9 @@ public class BookRegistrationService {
 
     @Autowired
     private BookRegistrationsRepository bookRegistrationsRepository;
+
+    @Autowired
+    private BookService bookService;
 
 
     //
@@ -59,4 +67,14 @@ public class BookRegistrationService {
 
         return bookRegistrationsRepository.save(bookRegs);
     }
+
+
+    // TODO: Uncomment and fix
+    /*public List<BookBookRegistrationReponseTemplateVO> getBookWithBookings(String title){
+        BookBookRegistrationReponseTemplateVO vo = new BookBookRegistrationReponseTemplateVO();
+        List<Book> book = bookService.findBookByTitle(title);
+        for (Book bk:book) {
+
+        }
+    }*/
 }
