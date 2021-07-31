@@ -22,16 +22,22 @@ public class BookService {
         return bookRepository.save(book);
     }
 
-
     public List<Book> findAllBooks() {
         return  bookRepository.findAll();
+    }
+
+    public List<Book> findByKeyword(String keyword) {
+        if (keyword != null) {
+            return bookRepository.search(keyword);
+        }
+        // returns all the book, if keyword is empty
+        return bookRepository.findAll();
     }
 
     public Book findByIsbn(String isbn) {
         return bookRepository.findByIsbn(isbn);
     }
-
-    // TODO: Change method to return Book instead of List<>
+    /*
     public List<Book> findBookByTitle(String keyword) {
         if (keyword != null) {
             return bookRepository.findBookByTitleOrOriginalTitle(keyword);
@@ -46,5 +52,5 @@ public class BookService {
         }
         // returns all the book, if keyword is empty
         return bookRepository.findAll();
-    }
+    }*/
 }

@@ -18,15 +18,13 @@ public interface BookRepository  extends JpaRepository<Book, Long> {
     Book findByIsbn(String isbn);
 
 
-    @Query(value = "SELECT b from Book b WHERE b.title LIKE %:keyword% OR b.originalTitle LIKE %:keyword% ")
-    List<Book> findBookByTitleOrOriginalTitle(@Param("keyword") String keyword);
+    @Query(value = "SELECT b from Book b WHERE b.title LIKE %:keyword% OR " +
+            "b.originalTitle LIKE %:keyword% OR b.authors LIKE %:keyword% ")
+    List<Book> search(@Param("keyword") String keyword);
 
-    // TODO: Implement Sort
+
+
+    // TODO:  Sort and Pagination
 
 
 }
-
-//
-//    @Query("SELECT u FROM User u WHERE u.status = :status and u.name = :name")
-//    User findUserByUserStatusAndUserName(@Param("status") Integer userStatus,
-//                                         @Param("name") String userName);

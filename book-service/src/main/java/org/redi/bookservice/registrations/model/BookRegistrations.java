@@ -31,16 +31,15 @@ public class BookRegistrations {
 
 
     /* Many Book Registrations can be owned linked to one Book*/
-    /*@ManyToOne(
+    @ManyToOne(
             cascade = CascadeType.ALL
     )
     @JoinColumn(
             name = "bookid",
             referencedColumnName = "Id"
     )
-    private Book book;*/
-    // TODO: Replace with book reference
-    private Long book;
+    private Book book;
+
 
     private Long userId; // Book Owner is a user .. // Many to One
 

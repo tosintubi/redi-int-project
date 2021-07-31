@@ -23,9 +23,9 @@ public class BookRegistrationsController {
         return "it works";
     }
     */
-    @PostMapping("add/")
-    public ResponseEntity<BookRegistrations> saveBookRegistrations(@RequestBody BookRegistrations book){
-        BookRegistrations newBookRegis =  bookRegistrationService.saveBookRegistration(book);
+    @PostMapping("add/{isbn}")
+    public ResponseEntity<BookRegistrations> saveBookRegistrations(@RequestBody BookRegistrations book, @PathVariable("isbn") String isbn){
+        BookRegistrations newBookRegis =  bookRegistrationService.saveBookRegistration(book, isbn);
         return  new ResponseEntity<>(newBookRegis, HttpStatus.CREATED);
     }
 

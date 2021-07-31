@@ -26,12 +26,18 @@ public class BookController {
     }
 
     @GetMapping({"all","/"})
-    public ResponseEntity<List<Book>> getBooks(){
+    public ResponseEntity<List<Book>> getAllBooks(){
         List<Book> bookList = bookService.findAllBooks();
         return  new ResponseEntity<>(bookList, HttpStatus.OK);
     }
 
-    @GetMapping("search/isbn/{isbn}")
+    @GetMapping("search/{keyword}")
+    public  ResponseEntity<List<Book>> findBookByKeyword(@PathVariable("keyword") String keyword){
+        List<Book> bookList = bookService.findByKeyword(keyword);
+        return  new ResponseEntity<>(bookList, HttpStatus.OK);
+    }
+
+    /*@GetMapping("search/isbn/{isbn}")
     public ResponseEntity<Book> findByIsbn(@PathVariable String isbn){
         Book book = bookService.findByIsbn(isbn);
         return  new ResponseEntity<>(book, HttpStatus.OK);
@@ -47,5 +53,5 @@ public class BookController {
     public  ResponseEntity<List<Book>> findBookByAuthors(@PathVariable("authors") String keyword){
         List<Book> bookList = bookService.findBookByAuthors(keyword);
         return  new ResponseEntity<>(bookList, HttpStatus.OK);
-    }
+    }*/
 }

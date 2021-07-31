@@ -1,6 +1,7 @@
 package org.redi.bookservice.registrations.service;
 
 import lombok.extern.slf4j.Slf4j;
+import org.redi.bookservice.exceptions.BookNotFoundException;
 import org.redi.bookservice.exceptions.BookRegistrationNotFoundException;
 import org.redi.bookservice.exceptions.UserNotFoundException;
 import org.redi.bookservice.operations.model.Book;
@@ -30,7 +31,7 @@ public class BookRegistrationService {
 
 
     //
-    public BookRegistrations getBookRegistrationByIdAndUserId(Long id) throws BookRegistrationNotFoundException{
+    public BookRegistrations getBookRegistrationById(Long id){
         log.info("Invoking Service: BookService.saveBookRegistration");
          Long bookId = Long.parseLong(String.valueOf(id));
 
@@ -38,30 +39,38 @@ public class BookRegistrationService {
                 ()-> new BookRegistrationNotFoundException("Book registration with Id " + id + " could not be found")
         );
     }
-    public BookRegistrations saveBookRegistration(BookRegistrations bookRegis){
+    public BookRegistrations saveBookRegistration(BookRegistrations bookRegis, String isbn){
         log.info("Invoking Service: BookService.saveBookRegistration");
 
-        // userId is not included in payload
-        if (bookRegis.getUserId()==null)
-            throw new UserNotFoundException("Invalid User, Please check the UserId and try again later");
+        Book bookWithIsbn = bookService.findByIsbn(isbn);
+        if (bookWithIsbn.getIsbn()==null){
+               throw new BookNotFoundException("Book with ISBN \" + id + \" could not be found");
+        } else
+        {
+            // userId is not included in payload
+            if (bookRegis.getUserId()==null)
+                throw new UserNotFoundException("Invalid User, Please check the UserId and try again later");
 
-        int count = bookRegis.getAmount();
-        if (count < 1) bookRegis.setEnabled(false);
+            int count = bookRegis.getAmount();
+            if (count < 1) bookRegis.setEnabled(false);
 
 
-        bookRegis.setCreated(LocalDateTime.now());
-        // Initially set the updated to the created_date
+            bookRegis.setCreated(LocalDateTime.now());
+            // Initially set the updated to the created_date
 
-        bookRegis.setUpdated(LocalDateTime.now());
+            bookRegis.setUpdated(LocalDateTime.now());
 
-        bookRegis.setAmountLoanedOut(0);
-        return bookRegistrationsRepository.save(bookRegis);
+            bookRegis.setAmountLoanedOut(0);
+
+            bookRegis.setBook(bookWithIsbn);
+            return bookRegistrationsRepository.save(bookRegis);
+        }
     }
 
     public BookRegistrations disableBookRegistration(Long bookRegisId){
         log.info("Implementing Service: BookService.disableBookRegistration");
 
-        BookRegistrations bookRegs = getBookRegistrationByIdAndUserId(bookRegisId);
+        BookRegistrations bookRegs = getBookRegistrationById(bookRegisId);
         bookRegs.setEnabled(false);
         bookRegs.setUpdated(LocalDateTime.now());
 
