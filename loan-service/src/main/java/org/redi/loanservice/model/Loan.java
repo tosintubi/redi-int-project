@@ -25,7 +25,6 @@ public class Loan {
     )
     private Long id;
 
-
     @Embedded
     private User lender;
     private User borrower;
