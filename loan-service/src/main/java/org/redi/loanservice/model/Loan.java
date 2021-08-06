@@ -25,6 +25,7 @@ public class Loan {
     )
     private Long id;
 
+
     @Embedded
     private User lender;
     private User borrower;
@@ -34,5 +35,5 @@ public class Loan {
     private LocalDateTime loanDate;
     private LocalDateTime returnedDate;
     private boolean pickedUp;
-    private int reminders;
+    private int numberOfReminders;
 }
