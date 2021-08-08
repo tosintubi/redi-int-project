@@ -13,7 +13,7 @@ import javax.persistence.Embeddable;
 @NoArgsConstructor
 @Builder
 public class User {
-    private Long id;
+    private Long userId;
     private String firstName;
     private String lastName;
     private String email;

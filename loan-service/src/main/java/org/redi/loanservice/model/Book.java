@@ -13,7 +13,7 @@ import javax.persistence.Embeddable;
 @NoArgsConstructor
 @Builder
 public class Book {
-    private Long Id;
+    private Long bookId;
 
     private String isbn;
     private String title;
