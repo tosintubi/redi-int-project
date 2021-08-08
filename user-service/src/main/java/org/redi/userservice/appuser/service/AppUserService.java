@@ -59,4 +59,13 @@ public class AppUserService implements UserDetailsService {
     public int enableAppUser(String email) {
         return appUserRepository.enableAppUser(email);
     }
+
+    public AppUser userBasicInfoById(Long id) throws UsernameNotFoundException{
+
+        return appUserRepository.getUserBasicInfoById(id);
+    }
+
+    public AppUser userBasicInfoByEmail(String email) throws UsernameNotFoundException{
+        return appUserRepository.getUserBasicInfoByEmail(email);
+    }
 }
