@@ -61,7 +61,7 @@ public class AppUserService implements UserDetailsService {
     }
 
     public AppUser userBasicInfoById(Long id) throws UsernameNotFoundException{
-
+        TODO: Parse into UserBasic info
         return appUserRepository.getUserBasicInfoById(id);
     }
 

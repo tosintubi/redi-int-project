@@ -54,7 +54,6 @@ public class BookRegistrationService {
             int count = bookRegis.getAmount();
             if (count < 1) bookRegis.setEnabled(false);
 
-
             bookRegis.setCreated(LocalDateTime.now());
             // Initially set the updated to the created_date
 
