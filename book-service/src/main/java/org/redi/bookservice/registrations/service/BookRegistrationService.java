@@ -5,19 +5,15 @@ import org.redi.bookservice.exceptions.BookNotFoundException;
 import org.redi.bookservice.exceptions.BookRegistrationNotFoundException;
 import org.redi.bookservice.exceptions.UserNotFoundException;
 import org.redi.bookservice.operations.model.Book;
-import org.redi.bookservice.operations.model.VO.BookBookRegistrationReponseTemplateVO;
-import org.redi.bookservice.operations.repository.BookRepository;
 import org.redi.bookservice.operations.service.BookService;
 import org.redi.bookservice.registrations.model.BookRegistrations;
 import org.redi.bookservice.registrations.repository.BookRegistrationsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.annotation.DateTimeFormat;
+
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.List;
-import java.util.Optional;
+
 
 @Service
 @Slf4j
