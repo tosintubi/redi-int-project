@@ -27,8 +27,6 @@ public class Loan {
     )
     private Long loanId;
 
-
-
     private Long lender;
     private Long borrower;
     private Book book;
