@@ -25,7 +25,6 @@ public class BookRegistrationService {
     @Autowired
     private BookService bookService;
 
-
     //
     public BookRegistrations getBookRegistrationById(Long id){
         log.info("Invoking Service: BookService.saveBookRegistration");
